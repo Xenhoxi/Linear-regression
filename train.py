@@ -23,10 +23,17 @@ def read_dataset() -> pd.DataFrame:
 
 
 def display_graph(mileage, price, Theta0, Theta1) -> None:
+    plt.figure(figsize=(12, 8))
     plt.scatter(mileage, price, color='blue')
     plt.axline((0, Theta0), slope=Theta1, color='red')
     plt.ylim(0, 10000)
-    plt.savefig("Plot")
+    plt.title("Linear regression model: Car price based on mileage", fontweight='bold')
+    plt.xlabel("Mileage (km)", fontweight='bold')
+    plt.ylabel("Price (€)", fontweight='bold')
+    equation = f"(Theta0 = {Theta0:.2f}, Theta1 = {Theta1:.2f})"
+    plt.text(0, 9500, equation, fontsize=12, fontweight='bold',color='green')
+    plt.savefig("Linear regression plot")
+    plt.show()
     plt.clf()
 
 
